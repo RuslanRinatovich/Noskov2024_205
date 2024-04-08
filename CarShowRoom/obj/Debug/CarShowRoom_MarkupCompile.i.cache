@@ -1,0 +1,20 @@
+﻿CarShowRoom
+
+
+winexe
+C#
+.cs
+D:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\
+CarShowRoom
+none
+false
+DEBUG;TRACE
+D:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\App.xaml
+171019463060
+2-1221820886
+451743865299
+38778031282
+MainWindow.xaml;Pages\AirPage.xaml;Pages\BrandPage.xaml;Pages\CarsPage.xaml;Pages\CataloguePage.xaml;Pages\ColorsPage.xaml;Pages\FuelTypePage.xaml;Pages\TransmissionPage.xaml;Pages\TypePage.xaml;Windows\AirWindow.xaml;Windows\BrandWindow.xaml;Windows\ColorWindow.xaml;Windows\FuelTypeWindow.xaml;Windows\LoginWindow.xaml;Windows\MyAccountWindow.xaml;Windows\TransmissionWindow.xaml;Windows\TypeWindow.xaml;
+
+True
+
