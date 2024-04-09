@@ -106,7 +106,7 @@
                                     ElementStyle="{StaticResource WrapText}" />
                 <DataGridTextColumn Binding="{Binding Title}" Header="Название" Width="*" ElementStyle="{StaticResource WrapText}" />
 
-                <DataGridTextColumn Binding="{Binding Type.Title}" Header="Класс автомобиля" Width="*" ElementStyle="{StaticResource WrapText}"/>
+                <DataGridTextColumn Binding="{Binding Type.Title}" Header="Вид кузова" Width="*" ElementStyle="{StaticResource WrapText}"/>
                 <DataGridTextColumn Binding="{Binding Brand.Title}" Header="Марка" Width="*" ElementStyle="{StaticResource WrapText}"/>
                 <DataGridTextColumn Binding="{Binding EngineCapacity}" Header="Объём двигателя, л." Width="*" ElementStyle="{StaticResource WrapText}"/>
                 <DataGridTextColumn Binding="{Binding HorsePower}" Header="л.с." Width="*" ElementStyle="{StaticResource WrapText}"/>

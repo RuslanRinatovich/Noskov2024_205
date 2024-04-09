@@ -1,4 +1,5 @@
 ﻿using CarShowRoom.Entities;
+using CarShowRoom.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,7 +34,7 @@ namespace CarShowRoom.Pages
         {
             //загрузка обновленных данных
             DataEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-            List<Car> goods = DataEntities.GetContext().Cars.OrderBy(p => p.Title).ToList();
+            List<Car> goods = DataEntities.GetContext().Cars.Where(p => p.IsEnabled == true).OrderBy(p => p.Title).ToList();
             LViewGoods.ItemsSource = goods;
             _itemcount = goods.Count;
             TextBlockCount.Text = $" Результат запроса: {goods.Count} записей из {goods.Count}";
@@ -61,7 +62,7 @@ namespace CarShowRoom.Pages
             // получаем текущие данные из бд
             //var currentGoods = DataBDEntities.GetContext().Abonements.OrderBy(p => p.CategoryTrainer.Trainer.LastName).ToList();
 
-            var currentData = DataEntities.GetContext().Cars.OrderBy(p => p.Title).ToList();
+            var currentData = DataEntities.GetContext().Cars.Where(p => p.IsEnabled == true).OrderBy(p => p.Title).ToList();
             // выбор только тех товаров, которые принадлежат данному производителю
 
 
@@ -116,9 +117,10 @@ namespace CarShowRoom.Pages
      
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //Room room = (sender as Button).DataContext as Room;
-            //BookingWindow bookingWindow = new BookingWindow(room);
-            //bookingWindow.ShowDialog();
+            Car car = (sender as Button).DataContext as Car;
+            AddNewOrderWindow addNewOrderWindow = new AddNewOrderWindow(Manager.CurrentUser, car);
+            addNewOrderWindow.ShowDialog();
+            UpdateData();
         }
 
        

@@ -43,6 +43,7 @@
     <NavigationProperty Name="Type" Relationship="Self.FK_Car_Type" FromRole="Car" ToRole="Type" />
     <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Car" FromRole="Car" ToRole="Order" />
     <NavigationProperty Name="Photos" Relationship="Self.FK_Photo_Car" FromRole="Car" ToRole="Photo" />
+    <Property Name="IsEnabled" Type="Boolean" />
   </EntityType>
   <EntityType Name="Client">
     <Key>
@@ -91,8 +92,8 @@
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="CarId" Type="Int32" Nullable="false" />
     <Property Name="StatusId" Type="Int32" Nullable="false" />
-    <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
-    <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateStart" Type="DateTime" Nullable="true" Precision="0" />
+    <Property Name="DateEnd" Type="DateTime" Nullable="true" Precision="0" />
     <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <NavigationProperty Name="Car" Relationship="Self.FK_Order_Car" FromRole="Order" ToRole="Car" />
     <NavigationProperty Name="Client" Relationship="Self.FK_Order_Client" FromRole="Order" ToRole="Client" />

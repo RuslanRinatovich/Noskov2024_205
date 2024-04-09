@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище DataModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище DataModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Air">
           <Key>
             <PropertyRef Name="Id" />
@@ -38,6 +38,7 @@
           <Property Name="DoorCount" Type="int" Nullable="false" />
           <Property Name="ColorId" Type="int" Nullable="false" />
           <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -81,8 +82,8 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CarId" Type="int" Nullable="false" />
           <Property Name="StatusId" Type="int" Nullable="false" />
-          <Property Name="DateStart" Type="date" Nullable="false" />
-          <Property Name="DateEnd" Type="date" Nullable="false" />
+          <Property Name="DateStart" Type="date" />
+          <Property Name="DateEnd" Type="date" />
           <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderContent">
@@ -390,8 +391,7 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -438,6 +438,7 @@
           <NavigationProperty Name="Type" Relationship="Self.FK_Car_Type" FromRole="Car" ToRole="Type" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Car" FromRole="Car" ToRole="Order" />
           <NavigationProperty Name="Photos" Relationship="Self.FK_Photo_Car" FromRole="Car" ToRole="Photo" />
+          <Property Name="IsEnabled" Type="Boolean" />
         </EntityType>
         <EntityType Name="Client">
           <Key>
@@ -486,8 +487,8 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="CarId" Type="Int32" Nullable="false" />
           <Property Name="StatusId" Type="Int32" Nullable="false" />
-          <Property Name="DateStart" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="DateEnd" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateStart" Type="DateTime" Nullable="true" Precision="0" />
+          <Property Name="DateEnd" Type="DateTime" Nullable="true" Precision="0" />
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Car" Relationship="Self.FK_Order_Car" FromRole="Order" ToRole="Car" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Order_Client" FromRole="Order" ToRole="Client" />
@@ -833,6 +834,7 @@
           <EntitySetMapping Name="Cars">
             <EntityTypeMapping TypeName="DataModel.Car">
               <MappingFragment StoreEntitySet="Car">
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="BrandId" ColumnName="BrandId" />

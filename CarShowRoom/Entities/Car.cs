@@ -36,6 +36,7 @@ namespace CarShowRoom.Entities
         public int DoorCount { get; set; }
         public int ColorId { get; set; }
         public int Price { get; set; }
+        public Nullable<bool> IsEnabled { get; set; }
     
         public virtual Air Air { get; set; }
         public virtual Brand Brand { get; set; }

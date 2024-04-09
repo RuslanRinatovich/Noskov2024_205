@@ -97,3 +97,11 @@ D:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Windows\Co
 D:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Windows\FuelTypeWindow.baml
 D:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Windows\TransmissionWindow.baml
 D:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Windows\TypeWindow.baml
+d:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\AddCarPage.g.cs
+d:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\AddCarPage.baml
+d:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Windows\AddNewOrderWindow.g.cs
+d:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Windows\AddNewOrderWindow.baml
+d:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\OrderPage.g.cs
+d:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\OrderPage.baml
+d:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\AddNewOrderPage.g.cs
+d:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\AddNewOrderPage.baml

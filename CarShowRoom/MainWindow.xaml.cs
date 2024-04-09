@@ -49,7 +49,7 @@ namespace CarShowRoom
             {
                 BtnBack.Visibility = Visibility.Visible;
                 BtnEnter.Visibility = Visibility.Collapsed;
-                BtnBooking.Visibility = Visibility.Collapsed;
+                BtnOrder.Visibility = Visibility.Collapsed;
                 BtnCars.Visibility = Visibility.Collapsed;
                 BtnMyAccount.Visibility = Visibility.Collapsed;
                 BtnUsers.Visibility = Visibility.Collapsed;
@@ -68,7 +68,7 @@ namespace CarShowRoom
 
                 if (Manager.CurrentUser.RoleId == 1)
                 {
-                    BtnBooking.Visibility = Visibility.Visible;
+                    BtnOrder.Visibility = Visibility.Visible;
                     BtnCars.Visibility = Visibility.Visible;
                     BtnMyAccount.Visibility = Visibility.Visible;
                     BtnMyBooking.Visibility = Visibility.Collapsed;
@@ -76,7 +76,7 @@ namespace CarShowRoom
                 }
                 else
                 {
-                    BtnBooking.Visibility = Visibility.Collapsed;
+                    BtnOrder.Visibility = Visibility.Collapsed;
                     BtnCars.Visibility = Visibility.Collapsed;
                     BtnUsers.Visibility = Visibility.Collapsed;
                     BtnMyAccount.Visibility = Visibility.Visible;
@@ -106,7 +106,7 @@ MessageBoxImage.Question);
                     BtnEnter.ToolTip = "Войти";
                     Manager.CurrentUser = null;
                     BtnBack.Visibility = Visibility.Collapsed;
-                    BtnBooking.Visibility = Visibility.Collapsed;
+                    BtnOrder.Visibility = Visibility.Collapsed;
                     BtnCars.Visibility = Visibility.Collapsed;
                     BtnMyAccount.Visibility = Visibility.Collapsed;
                     BtnMyBooking.Visibility = Visibility.Collapsed;
@@ -124,7 +124,7 @@ MessageBoxImage.Question);
 
                 if (Manager.CurrentUser.RoleId == 1)
                 {
-                    BtnBooking.Visibility = Visibility.Visible;
+                    BtnOrder.Visibility = Visibility.Visible;
                     BtnCars.Visibility = Visibility.Visible;
                     BtnMyAccount.Visibility = Visibility.Visible;
                     BtnUsers.Visibility = Visibility.Visible;
@@ -132,7 +132,7 @@ MessageBoxImage.Question);
                 }
                 else
                 {
-                    BtnBooking.Visibility = Visibility.Collapsed;
+                    BtnOrder.Visibility = Visibility.Collapsed;
                     BtnCars.Visibility = Visibility.Collapsed;
                     BtnUsers.Visibility = Visibility.Collapsed;
                     BtnMyAccount.Visibility = Visibility.Visible;
@@ -179,7 +179,7 @@ MessageBoxImage.Question);
         private void BtnOrder_Click(object sender, RoutedEventArgs e)
         {
 
-            // MainFrame.Navigate(new OrderPage());
+            
 
 
         }
@@ -211,6 +211,9 @@ MessageBoxImage.Question);
           //  MainFrame.Navigate(new UsersPage());
         }
 
-
+        private void BtnOrder_Click_1(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(new OrderPage());
+        }
     }
 }

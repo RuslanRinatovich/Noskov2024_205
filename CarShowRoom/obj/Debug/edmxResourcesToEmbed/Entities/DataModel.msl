@@ -20,6 +20,7 @@
     <EntitySetMapping Name="Cars">
       <EntityTypeMapping TypeName="DataModel.Car">
         <MappingFragment StoreEntitySet="Car">
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Title" ColumnName="Title" />
           <ScalarProperty Name="BrandId" ColumnName="BrandId" />

@@ -23,8 +23,8 @@ namespace CarShowRoom.Entities
         public int Id { get; set; }
         public int CarId { get; set; }
         public int StatusId { get; set; }
-        public System.DateTime DateStart { get; set; }
-        public System.DateTime DateEnd { get; set; }
+        public Nullable<System.DateTime> DateStart { get; set; }
+        public Nullable<System.DateTime> DateEnd { get; set; }
         public string Username { get; set; }
     
         public virtual Car Car { get; set; }

@@ -61,12 +61,12 @@ namespace CarShowRoom.Pages
 
         private void BtnAdd_Click(object sender, RoutedEventArgs e)
         {
-            //   Manager.MainFrame.Navigate(new AddQuestPage(null));
+             Manager.MainFrame.Navigate(new AddCarPage(null));
         }
 
         private void BtnEdit_Click(object sender, RoutedEventArgs e)
         {
-            //  Manager.MainFrame.Navigate(new AddQuestPage((sender as Button).DataContext as Weapon));
+              Manager.MainFrame.Navigate(new AddCarPage((sender as Button).DataContext as Car));
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -230,32 +230,36 @@ namespace CarShowRoom.Pages
                     string s;
                     // DateTime y = Convert.ToDateTime(dtOrders.Rows[i].Cells[1].Value);
                     xlSheet.Cells[row, 2] = car.Id.ToString();
-                    s = ""; if (car.TypeId != null) s = car.Type.Title.ToString();
-                    xlSheet.Cells[row, 3] = s;
-                    if (car.BrandId != null) s = car.Brand.Title.ToString();
-                    xlSheet.Cells[row, 4] = s;
-                    s = "";
-
-                    xlSheet.Cells[row, 5] = car.Title.ToString();
+                    xlSheet.Cells[row, 3] = car.Title.ToString();
+                    xlSheet.Cells[row, 4] = car.Type.Title.ToString();
+                    xlSheet.Cells[row, 5] = car.Brand.Title.ToString();
                     s = "";
                     if (car.EngineCapacity != null) s = car.EngineCapacity.ToString();
                     xlSheet.Cells[row, 6] = s;
                     s = "";
-                    if (car.FuelRate != null) s = car.FuelRate.ToString();
+                    if (car.HorsePower != null) s = car.HorsePower.ToString();
                     xlSheet.Cells[row, 7] = s;
+                    xlSheet.Cells[row, 8] = car.Transmission.Title.ToString();
+                    xlSheet.Cells[row, 9] = car.Color.Title.ToString();
+                    s = "";
+                    if (car.FuelRate != null) s = car.FuelRate.ToString();
+                    xlSheet.Cells[row, 10] = s;
                     s = "";
                     if (car.TrunkVolume != null) s = car.TrunkVolume.ToString();
-                    xlSheet.Cells[row, 8] = s;
+                    xlSheet.Cells[row, 11] = s;
                     s = "";
-
-
-
+                    if (car.DoorCount != null) s = car.DoorCount.ToString();
+                    xlSheet.Cells[row, 12] = s;
+                    xlSheet.Cells[row, 13] = car.Air.Title.ToString();
+                    xlSheet.Cells[row, 14] = car.FuelType.Title.ToString();
+                    s = "";
+                    if (car.Year != null) s = car.Year.ToString();
+                    xlSheet.Cells[row, 15] = s;
+                    s = "";
                     if (car.Price != null) s = car.Price.ToString();
-                    xlSheet.Cells[row, 9] = s;
-
-
+                    xlSheet.Cells[row, 16] = s;
                     row++;
-                    Excel.Range r = xlSheet.get_Range("A" + row.ToString(), "K" + row.ToString());
+                    Excel.Range r = xlSheet.get_Range("A" + row.ToString(), "P" + row.ToString());
                     r.Insert(Excel.XlInsertShiftDirection.xlShiftDown);
                     i++;
                 }
@@ -264,7 +268,7 @@ namespace CarShowRoom.Pages
 
 
                 row--;
-                xlSheetRange = xlSheet.get_Range("A2:K" + (row + 1).ToString(), System.Type.Missing);
+                xlSheetRange = xlSheet.get_Range("A2:P" + (row + 1).ToString(), System.Type.Missing);
                 xlSheetRange.Borders.LineStyle = true;
                 //xlSheet.Cells[row + 1, 9] = "=SUM(I2:I" + row.ToString() + ")";
 
