@@ -51,7 +51,8 @@
         <TextBlock Grid.Row="3" Grid.Column="0" Text="Стоимость:"  Margin="20 0"/>
         <TextBox x:Name="TextBoxId" Text="{Binding Id}" Grid.Row="0" Grid.Column="1" Padding="0,2" IsReadOnly="True" Visibility="Collapsed"/>
 
-        <TextBox x:Name="TextBoxPrice"   Grid.Row="3" Grid.Column="1" Padding="0,2" IsReadOnly="True"/>
+        <TextBox x:Name="TextBoxPrice"  
+                 Grid.Row="3" Grid.Column="1" Padding="0,2" IsReadOnly="True"/>
 
 
         <TextBlock Grid.Row="4" Grid.Column="0" Text="Статус:"  Margin="20 0"/>
@@ -73,15 +74,15 @@
                   SelectionMode="Single " LoadingRow="DtDataLoadingRow">
             <DataGrid.Columns>
                
-                <DataGridTextColumn Header="Дополнительное оборудование" Binding="{Binding Title}" Width="*"/>
-                <DataGridTextColumn Header="Стоимость" Binding="{Binding Price, StringFormat='c', ConverterCulture='ru-RU'}" Width="*"/>
+                <DataGridTextColumn Header="Дополнительное оборудование" Binding="{Binding Option.Title}" Width="*"/>
+                <DataGridTextColumn Header="Стоимость" Binding="{Binding Option.Price, StringFormat='c', ConverterCulture='ru-RU'}" Width="*"/>
 
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Right">
-            <Button x:Name="btnAdd" Content="{materialDesign:PackIcon Kind=Add}"    Style="{DynamicResource MaterialDesignFlatButton}" />
+            <Button x:Name="btnAdd" Content="{materialDesign:PackIcon Kind=Add}"    Style="{DynamicResource MaterialDesignFlatButton}" Click="btnAdd_Click" />
             <Button x:Name="btnDelete" Content="{materialDesign:PackIcon Kind=Delete}" 
-                    Style="{DynamicResource MaterialDesignFlatButton}"/>
+                    Style="{DynamicResource MaterialDesignFlatButton}" Click="btnDelete_Click"/>
         </StackPanel>
 
         <TextBlock x:Name="TextBlockTotalPrice" Text="{Binding TotalPrice, StringFormat={}Количество дней: {0:c}, ConverterCulture='ru-RU'}" Grid.Row="8" Grid.ColumnSpan="2"/>

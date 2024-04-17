@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using CarShowRoom.Entities;
 using Type = CarShowRoom.Entities.Type;
 using Excel = Microsoft.Office.Interop.Excel;
+using CarShowRoom.Windows;
 
 namespace CarShowRoom.Pages
 {
@@ -55,6 +56,8 @@ namespace CarShowRoom.Pages
             }
             lbClient.ItemsSource = DataEntities.GetContext().Clients.ToList();
             DataContext = _currentItem;
+            TextBoxPrice.Text = _currentItem.GetTotalPrice.ToString("c");
+            DtData.ItemsSource = DataEntities.GetContext().OrderContents.Where(o => o.OrderId == _currentItem.Id).ToList();
             ComboStatus.ItemsSource = DataEntities.GetContext().Status.ToList();
             ComboCar.ItemsSource = DataEntities.GetContext().Cars.ToList();
             ComboStatus.ItemsSource = DataEntities.GetContext().Status.ToList();
@@ -85,7 +88,8 @@ namespace CarShowRoom.Pages
             {
                 DataEntities.GetContext().Orders.Add(_currentItem);
             }
-
+            MessageBox.Show(_currentCar.Id.ToString() + " " + _currentItem.Car.Id.ToString());
+            
             DataEntities.GetContext().ChangeTracker.Entries()
             .Where(x => x.State == EntityState.Modified &&
                         !typeof(Order).IsAssignableFrom(x.Entity.GetType()))
@@ -93,6 +97,12 @@ namespace CarShowRoom.Pages
             .ForEach(entry => {
                 entry.CurrentValues.SetValues(entry.OriginalValues);
             });
+            if (_currentCar.Id != _currentItem.Car.Id)
+            {
+                _currentCar.IsEnabled = true;
+
+            }
+            _currentItem.Car.IsEnabled = false;
             DataEntities.GetContext().SaveChanges();
             MessageBox.Show("Запись Изменена");
             // Возвращаемся на предыдущую форму
@@ -106,66 +116,80 @@ namespace CarShowRoom.Pages
 
         private void PrintExcel()
         {
-            //string fileName = AppDomain.CurrentDomain.BaseDirectory + "\\" + "Check" + ".xltx";
-            //Excel.Application xlApp = new Excel.Application();
-            //Excel.Worksheet xlSheet = new Excel.Worksheet();
-            //try
-            //{
-            //    //добавляем книгу
-            //    xlApp.Workbooks.Open(fileName, System.Type.Missing, System.Type.Missing, System.Type.Missing, System.Type.Missing,
-            //                              System.Type.Missing, System.Type.Missing, System.Type.Missing, System.Type.Missing,
-            //                              System.Type.Missing, System.Type.Missing, System.Type.Missing, System.Type.Missing,
-            //                              System.Type.Missing, System.Type.Missing);
-            //    //делаем временно неактивным документ
-            //    xlApp.Interactive = false;
-            //    xlApp.EnableEvents = false;
-            //    Excel.Range xlSheetRange;
-            //    //выбираем лист на котором будем работать (Лист 1)
-            //    xlSheet = (Excel.Worksheet)xlApp.Sheets[1];
-            //    //Название листа
-            //    xlSheet.Name = "Список заявок";
-            //    int row = 9;
-            //    int i = 0;
+            string fileName = AppDomain.CurrentDomain.BaseDirectory + "\\" + "Check" + ".xltx";
+            Excel.Application xlApp = new Excel.Application();
+            Excel.Worksheet xlSheet = new Excel.Worksheet();
+            try
+            {
+                //добавляем книгу
+                xlApp.Workbooks.Open(fileName, System.Type.Missing, System.Type.Missing, System.Type.Missing, System.Type.Missing,
+                                          System.Type.Missing, System.Type.Missing, System.Type.Missing, System.Type.Missing,
+                                          System.Type.Missing, System.Type.Missing, System.Type.Missing, System.Type.Missing,
+                                          System.Type.Missing, System.Type.Missing);
+                //делаем временно неактивным документ
+                xlApp.Interactive = false;
+                xlApp.EnableEvents = false;
+                Excel.Range xlSheetRange;
+                //выбираем лист на котором будем работать (Лист 1)
+                xlSheet = (Excel.Worksheet)xlApp.Sheets[1];
+                //Название листа
+                xlSheet.Name = "Чек";
+                int row = 9;
+                int i = 0;
 
-            //    xlSheet.Cells[4, 3] = _currentItem.Id;
+                xlSheet.Cells[4, 3] = _currentItem.Id;
 
 
 
-            //    xlSheet.Cells[5, 3] = $"{_currentItem.Client.LastName} {_currentItem.Client.FirstName} ";
-            //    xlSheet.Cells[6, 4] = _currentItem.Client.PassportSeries;
-            //    xlSheet.Cells[6, 7] = _currentItem.Client.PassportNum;
-            //    xlSheet.Cells[7, 3] = _currentItem.Client.Phone;
+                xlSheet.Cells[5, 3] = $"{_currentItem.Client.LastName} {_currentItem.Client.FirstName} ";
+                xlSheet.Cells[6, 4] = _currentItem.Client.PassportSeries;
+                xlSheet.Cells[6, 7] = _currentItem.Client.PassportNum;
+                xlSheet.Cells[7, 3] = _currentItem.Client.Phone;
 
-            //    xlSheet.Cells[8, 4] = _currentItem.DateStart.ToShortDateString();
-            //    xlSheet.Cells[8, 8] = _currentItem.DateEnd.ToShortDateString();
-            //    xlSheet.Cells[9, 5] = _currentItem.PlaceStart;
-            //    xlSheet.Cells[10, 5] = _currentItem.PlaceEnd;
-            //    xlSheet.Cells[13, 2] = $"Прокат автомобиля марки {_currentItem.PriceList.Car.Brand.Name} {_currentItem.PriceList.Car.Name} на {_currentItem.PriceList.Category.Name}";
-            //    xlSheet.Cells[13, 6] = _currentItem.PriceList.Price;
-            //    xlSheet.Cells[13, 7] = _currentItem.TotalDays;
-            //    xlSheet.Cells[13, 8] = _currentItem.TotalPrice;
+                string s = "";
+                if (_currentItem.DateEnd != null)
+                {
+                    s = _currentItem.DateEnd.ToString();
+                }
+                xlSheet.Cells[8, 4] = s;
+                xlSheet.Cells[9, 5] = _currentItem.Car.Title;
+                xlSheet.Cells[10, 5] = _currentItem.GetTotalPrice;
+                int j = 13;
+                foreach (OrderContent orderContent in _currentItem.OrderContents)
+                {
+                    xlSheet.Cells[j, 1] = (j - 12).ToString();
+                    xlSheet.Cells[j, 2] = $"{orderContent.Option.Title}";
+                    xlSheet.Cells[j, 6] = $"{orderContent.Option.Price}";
+                    xlSheet.Cells[j, 7] = "1";
+                    xlSheet.Cells[j, 8] = $"{orderContent.Option.Price}";
+                    j++;
+                    Excel.Range r = xlSheet.get_Range("A" + j.ToString(), "H" + j.ToString());
+                    r.Insert(Excel.XlInsertShiftDirection.xlShiftDown);
+                    xlSheet.Range[xlSheet.Cells[j, 2], xlSheet.Cells[j, 5]].Merge();
+                }
+                xlSheet.Range[xlSheet.Cells[13, 1], xlSheet.Cells[j - 1, 8]].Borders.LineStyle = true;
+                xlSheet.Cells[j+2, 3] = $"{Manager.CurrentUser.Client.LastName} {Manager.CurrentUser.Client.FirstName} ";
 
-            //    xlSheet.Cells[15, 3] = $"{_currentItem.Client.LastName} {_currentItem.Client.FirstName} ";
-            //    row++;
-            //    xlSheet.Cells[16, 3] = DateTime.Today.ToShortDateString();
-            //    //выбираем всю область данных*/
-            //    xlSheetRange = xlSheet.UsedRange;
-            //    //выравниваем строки и колонки по их содержимому
-            //    //xlSheetRange.Columns.AutoFit();
-            //    //xlSheetRange.Rows.AutoFit();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.ToString());
-            //}
-            //finally
-            //{
-            //    //Показываем ексель
-            //    xlApp.Visible = true;
-            //    xlApp.Interactive = true;
-            //    xlApp.ScreenUpdating = true;
-            //    xlApp.UserControl = true;
-            //}
+                row++;
+                xlSheet.Cells[j+3, 3] = DateTime.Today.ToShortDateString();
+                //выбираем всю область данных*/
+                xlSheetRange = xlSheet.UsedRange;
+                //выравниваем строки и колонки по их содержимому
+                //xlSheetRange.Columns.AutoFit();
+                //xlSheetRange.Rows.AutoFit();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                //Показываем ексель
+                xlApp.Visible = true;
+                xlApp.Interactive = true;
+                xlApp.ScreenUpdating = true;
+                xlApp.UserControl = true;
+            }
         }
 
         private void DtDataLoadingRow(object sender, DataGridRowEventArgs e)
@@ -220,6 +244,64 @@ namespace CarShowRoom.Pages
             if (_currentItem.Id == 0)
                 return;
             PrintExcel();
+        }
+
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                //    если мы только добавляем нового агента, то продаж у него еще нет
+                if (_currentItem.Id == 0) return;
+
+                // Открываем окно добавления новой продажи
+                AddOptionWindow window = new AddOptionWindow(_currentItem);
+                // если в окне добавления продажи нажата кнопка ОК
+                if (window.ShowDialog() == true)
+                {
+                    // добавляем новую продажу
+                    OrderContent orderContent = new OrderContent();
+                    orderContent.Option = window.currentItem;
+                    orderContent.Order = _currentItem;
+                    _currentItem.OrderContents.Add(orderContent);
+                    DataEntities.GetContext().SaveChanges();
+                    TextBoxPrice.Text = _currentItem.GetTotalPrice.ToString("c");
+                    DtData.ItemsSource = DataEntities.GetContext().OrderContents.Where(o => o.OrderId == _currentItem.Id).ToList();
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Ошибка");
+            }
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+
+                // если ни одного объекта не выделено, выходим
+                if (DtData.SelectedItem == null) return;
+                // получаем выделенный объект
+                MessageBoxResult messageBoxResult = MessageBox.Show($"Удалить запись? ", "Удаление", MessageBoxButton.OKCancel,
+MessageBoxImage.Question);
+                if (messageBoxResult == MessageBoxResult.OK)
+                {
+                    OrderContent deletedItem = DtData.SelectedItem as OrderContent;
+
+
+                    DataEntities.GetContext().OrderContents.Remove(deletedItem);
+                    DataEntities.GetContext().SaveChanges();
+                    // после удаления продажи
+                    // подгружаем измененные данные
+                    TextBoxPrice.Text = _currentItem.GetTotalPrice.ToString("c");
+                    DtData.ItemsSource = DataEntities.GetContext().OrderContents.Where(o => o.OrderId == _currentItem.Id).ToList();
+                    MessageBox.Show("Запись удалена", "Внимание", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

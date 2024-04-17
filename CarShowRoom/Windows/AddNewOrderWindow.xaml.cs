@@ -138,7 +138,7 @@ namespace CarShowRoom.Windows
                     Word.Paragraph paragraph = document.Paragraphs.Add();
                     Word.Range range = paragraph.Range;
                     range.Font.Bold = 1;
-                    range.Text = $"Номер сертификата: {order.Id}";
+                    range.Text = $"Номер брони: {order.Id}";
                     range.InsertParagraphAfter();
 
 
@@ -147,7 +147,7 @@ namespace CarShowRoom.Windows
                     range.Font.Bold = 0;
                     range.Text = $"Дата создания записи: {order.DateStart}\n" +
                         $"Уважаемый, {order.Client.GetFio}, телефон:{order.Client.Phone}\temail:{order.Client.Email}\n" +
-                        $"Вы забронировали автомобиль: {order.Car.Title}. Срок брони истекает через три дня";
+                        $"Вы забронировали автомобиль: {order.Car.Title}";
 
 
                     range.InsertParagraphAfter();

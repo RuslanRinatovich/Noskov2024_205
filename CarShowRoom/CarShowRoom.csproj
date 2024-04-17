@@ -161,6 +161,7 @@
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\Partials\Client.cs" />
+    <Compile Include="Entities\Partials\Order.cs" />
     <Compile Include="Entities\Photo.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -188,6 +189,9 @@
     <Compile Include="Pages\AddNewOrderPage.xaml.cs">
       <DependentUpon>AddNewOrderPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddUserPage.xaml.cs">
+      <DependentUpon>AddUserPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AirPage.xaml.cs">
       <DependentUpon>AirPage.xaml</DependentUpon>
     </Compile>
@@ -203,6 +207,9 @@
     <Compile Include="Pages\FuelTypePage.xaml.cs">
       <DependentUpon>FuelTypePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MyOrdersPage.xaml.cs">
+      <DependentUpon>MyOrdersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\OrderPage.xaml.cs">
       <DependentUpon>OrderPage.xaml</DependentUpon>
     </Compile>
@@ -212,8 +219,14 @@
     <Compile Include="Pages\TypePage.xaml.cs">
       <DependentUpon>TypePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UsersPage.xaml.cs">
+      <DependentUpon>UsersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AddNewOrderWindow.xaml.cs">
       <DependentUpon>AddNewOrderWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\AddOptionWindow.xaml.cs">
+      <DependentUpon>AddOptionWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AirWindow.xaml.cs">
       <DependentUpon>AirWindow.xaml</DependentUpon>
@@ -263,6 +276,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddUserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AirPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -287,6 +304,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MyOrdersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\OrderPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -299,7 +320,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\UsersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\AddNewOrderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\AddOptionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

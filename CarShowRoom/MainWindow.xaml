@@ -44,7 +44,7 @@
                            />
 
 
-                    <Button x:Name="BtnMyBooking"  Click="BtnMyOrders_Click" Visibility="Collapsed"
+                    <Button x:Name="BtnMyBooking"  Click="BtnBooking_Click" Visibility="Collapsed"
                             ToolTip="Мои брони"
                             Style="{StaticResource MaterialDesignFlatButton}"
                             Content="{materialDesign:PackIcon Kind=Book, Size=24}"

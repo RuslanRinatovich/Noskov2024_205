@@ -1,0 +1,42 @@
+﻿<Window x:Class="CarShowRoom.Windows.AddOptionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CarShowRoom.Windows"
+          xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+          Title="Добавить опции"  Background="{DynamicResource MaterialDesignPaper}" Width="600" Height="200"
+        WindowStartupLocation="CenterScreen" WindowStyle="ToolWindow"
+        FontFamily="{DynamicResource MaterialDesignFont}"  >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="40" />
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="187" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Стоимость " VerticalAlignment="Center" 
+ Margin="20 0 0 0"  Grid.Column="0" Height="20"  />
+        <TextBox IsReadOnly="True" x:Name="TextBoxPrice" Grid.Column="1" VerticalAlignment="Center" 
+     />
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Опция" 
+ Margin="20 0 0 0"  VerticalAlignment="Center" />
+
+        <ComboBox x:Name="ComboBoxOption"  SelectedItem="{Binding Option}" 
+   IsTextSearchEnabled="True" IsEditable="True" 
+   Grid.Row="1" Grid.Column="1" 
+   DisplayMemberPath="Title" 
+   SelectedValuePath="Id" Text="{Binding Text}" SelectionChanged="ComboBoxOption_SelectionChanged" />
+        <StackPanel HorizontalAlignment="Center"
+  Orientation="Horizontal" Grid.Row="5" Grid.ColumnSpan="2"
+   Width="162">
+            <Button IsDefault="True"  MinWidth="60" Margin="5" Click="Button_Click" Content="ОК"/>
+            <Button IsCancel="True" MinWidth="60" Margin="5" Content="Отмена"/>
+        </StackPanel>
+    </Grid>
+</Window>

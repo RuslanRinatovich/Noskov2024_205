@@ -201,14 +201,14 @@ MessageBoxImage.Question);
 
         private void BtnBooking_Click(object sender, RoutedEventArgs e)
         {
-            //MainFrame.Navigate(new BookingPage());
+            MainFrame.Navigate(new MyOrdersPage());
         }
 
 
 
         private void BtnUsers_Click(object sender, RoutedEventArgs e)
         {
-          //  MainFrame.Navigate(new UsersPage());
+           MainFrame.Navigate(new UsersPage());
         }
 
         private void BtnOrder_Click_1(object sender, RoutedEventArgs e)

@@ -105,3 +105,11 @@ d:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\Orde
 d:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\OrderPage.baml
 d:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\AddNewOrderPage.g.cs
 d:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\AddNewOrderPage.baml
+D:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Windows\AddOptionWindow.g.cs
+D:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Windows\AddOptionWindow.baml
+D:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\MyOrdersPage.g.cs
+D:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\MyOrdersPage.baml
+D:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\AddUserPage.g.cs
+D:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\UsersPage.g.cs
+D:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\AddUserPage.baml
+D:\ДИПЛОМЫ 2024\Носков\CarShowRoom\CarShowRoom\obj\Debug\Pages\UsersPage.baml
